@@ -7,7 +7,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     kotlin("kapt")
-    alias(libs.plugins.google.dagger.hilt)
 }
 
 val apikeyPropertiesFile = rootProject.file("apikey.properties")
@@ -26,7 +25,7 @@ android {
     defaultConfig {
         applicationId = "com.example.movie"
         minSdk = 21
-        targetSdk = 34
+        this.targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -56,11 +55,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -87,4 +86,44 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.google.dagger.hilt)
     kapt(libs.google.dagger.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
+
+    // Coil
+    implementation(libs.coil.compose)
+
+    //Timber
+    implementation(libs.timber)
+
+    //DataStore
+    implementation(libs.datastore.preferences)
+
+    // Splashscreen
+    implementation(libs.splashscreen)
+
+    //Gson
+    implementation(libs.gson)
+
+    // Others - Compose dependencies
+    implementation(libs.lifecycle.viewmodel.compose)
+    implementation(libs.material.icons.extended)
+    implementation(libs.accompanist.flowlayout)
+    implementation(libs.navigation.compose)
+
+    // Paging3
+    implementation(libs.paging.runtime.ktx)
+    implementation(libs.paging.compose)
+
+    // Coroutines
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
+
+    // Coroutine Lifecycle Scopes
+    implementation(libs.lifecycle.viewmodel.ktx)
+
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+
 }

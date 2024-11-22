@@ -10,11 +10,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.movie.ui.theme.MovieTheme
 
 class MainActivity : ComponentActivity() {
-    val api = BuildConfig.API_KEY
+    private val api = BuildConfig.API_KEY
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,6 +22,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
+                        api=api,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -32,17 +32,10 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(name: String,api: String, modifier: Modifier = Modifier) {
     Text(
-        text = "Hello $name!",
+        text = "Hello $name!$api",
         modifier = modifier
     )
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MovieTheme {
-        Greeting("Android")
-    }
-}

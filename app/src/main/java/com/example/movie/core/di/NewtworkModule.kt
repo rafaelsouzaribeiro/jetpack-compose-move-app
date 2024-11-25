@@ -55,6 +55,7 @@ object NewtworkModule {
         return GsonConverterFactory.create()
     }
 
+    @Provides
     fun provideMovieService(
         client: OkHttpClient,
         converterFactory: GsonConverterFactory
